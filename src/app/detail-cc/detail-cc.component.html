@@ -1,0 +1,31 @@
+<!--On change l'aspect quand on click-->
+<div class="camping-car-card" [ngClass]="{ liked: buttonValue === 'Oops, unlike !' }">
+    <div>
+        <h2>{{ campingCar.reference | titlecase }}</h2> <!--on formate le titre en titlecase-->
+        <p>Marque : {{ campingCar.marque }} {{ campingCar.motorisation }}L  {{ campingCar.profile }} </p>
+        <ul>
+            <li *ngIf="campingCar.model">Model :  {{campingCar.model}}</li>
+            <li *ngIf="campingCar.poidsTotalAutoriseEnCharge">PTCA :  {{campingCar.poidsTotalAutoriseEnCharge}}</li>
+            <li *ngIf="campingCar.chargeUtile">CU :  {{campingCar.chargeUtile}}</li>
+        </ul>
+        <p>Dimensions : </p>
+        <ul>
+            <li>Hauteur : {{ campingCar.hauteur }}m </li>
+            <li>Longeur : {{ campingCar.longueur }}m </li>
+            <li>Largeur : {{ campingCar.largeur }}m </li>
+        </ul>
+        <p>Nombre de places : {{ campingCar.nombreDePlaces }} places assises et {{ campingCar.nombreCouchages }} couchages</p>
+        <p *ngIf="campingCar.disposition">Disposition : {{ campingCar.disposition }}</p>
+        <p>Tarif : {{ campingCar.tarifJournalier | currency: 'EUR' }}/jour</p>
+        <div class="buttons">
+            <div>
+                <button (click)="onLike()"> {{buttonValue}} </button>
+                <!--On fait évoluer le style en fonction des valeurs : on rend de + en + vert avec les valeurs de snaps qui augmente-->
+                <span [ngStyle]="{ color: 'rgb(0,'+ campingCar.like + ', 0)'}">🤌 {{ campingCar.like }}</span>
+            </div>
+            <a routerLink="/campingCars">Back</a>
+        </div>
+        
+    </div>
+    <img [src]="campingCar.imageUrl" [alt]="campingCar.reference">
+</div>

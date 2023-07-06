@@ -1,0 +1,10 @@
+<!--On change l'aspect quand on click-->
+<div class="camping-car-card" [ngClass]="{ snapped: buttonValue === 'Oops, unlike !' }">
+    <div>
+        <h2>{{ campingCar.reference | titlecase }}</h2> <!--on formate le titre en titlecase : majuscule à chaque mot-->
+        <p>{{ campingCar.nombreCouchages }} couchages</p>
+        <p>Tarif : {{ campingCar.tarifJournalier | currency: 'EUR' }}/jour </p>
+        <button (click)="onViewCampingCar()">VIEW</button>
+    </div>
+    <img [src]="campingCar.imageUrl" [alt]="campingCar.reference">
+</div>
