@@ -11,6 +11,7 @@ import { ListeCcComponent } from './liste-cc/liste-cc.component';
 import { HeaderComponent } from './header/header.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { DetailCcComponent } from './detail-cc/detail-cc.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { DetailCcComponent } from './detail-cc/detail-cc.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [
     // à ajouter en même temps que les imports pour le français

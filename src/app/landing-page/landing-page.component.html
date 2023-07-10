@@ -1,4 +1,13 @@
 <div class="landing-block">
+    <form #emailForm="ngForm" (ngSubmit)="onSubmitEmail(emailForm)">
+        <!-- #emailForm est une référence locale à la directive ngForm-->
+
+        <label for="emailInput">Inscription à la news letter : </label>
+        <input type="email" name="userEmail" id="email" [(ngModel)]="userEmail">
+        <!-- [(ngModel)] etst un 2 way bonding-->
+        
+        <button type="submit">Let's got for it !</button>
+    </form>
     <h2>Concrétisez vos rêves d'escapade</h2>
     <img src="../../assets/Escape Dreams.jpg" alt="Escape Dreams">
     <div class="landing-links">
