@@ -163,4 +163,13 @@ export class campingCarService {
       //fonction conditionnelle
       likeType === 'like' ? campingCar.like++ : campingCar.like--;
     }
+
+    /**
+     * ajoute un camping car à la liste
+     * form : formulaire venant du composant newCampingCar
+     */
+    addNewCampingCar(form: CampingCar): void {
+      form.id = this.campingCars.length+1;
+      this.campingCars.push(form);
+    }
 }

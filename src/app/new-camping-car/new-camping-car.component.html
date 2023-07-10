@@ -62,6 +62,9 @@
                 <label for="imageUrl">Image : </label>            
                 <input type="text" id="imageUrl" formControlName="imageUrl">
             </div>
+            <div class="action-buttons">
+                <button type="submit" (click)="onSubmitForm()" [disabled]="campingCarForm.invalid">Enregistrer</button>
+            </div>
         </form>
     </div>
     <div class="camping-car-card" *ngIf="campingCarPreview$ | async as campingCar">
