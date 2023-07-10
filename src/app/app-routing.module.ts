@@ -7,6 +7,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 const routes: Routes = [
   { path: 'campingCars/:id', component: DetailCcComponent },
   { path: 'campingCars', component: ListeCcComponent },
+  { path: 'create', component: ListeCcComponent },
   { path: '', component: LandingPageComponent }
 ];
 
