@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CampingCar } from '../models/camping-car.model';
-import { Observable, map } from 'rxjs';
+import {Observable, map, tap} from 'rxjs';
 import { campingCarService } from '../services/camping-cars.service';
 import { Router } from '@angular/router';
 
@@ -15,11 +15,11 @@ export class NewCampingCarComponent implements OnInit {
   campingCarPreview$!: Observable<CampingCar>;
   urlRegex!: RegExp;
 
-  constructor (private formBuilder: FormBuilder, 
+  constructor (private formBuilder: FormBuilder,
     private router: Router,
     private campingCarService: campingCarService
     ){}
-  
+
   ngOnInit(): void {
     this.urlRegex = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&/=]*)/;
 
@@ -62,9 +62,14 @@ export class NewCampingCarComponent implements OnInit {
       like:0
     }
 
-    this.campingCarService.addNewCampingCar(newCampingCar);
-    this.router.navigateByUrl('campingCars');
-    //on répupère les campingCarForm.value pour les transmettre
+    this.campingCarService.addNewCampingCar(newCampingCar).pipe(
+      tap(() => this.router.navigateByUrl('campingCars'))
+    ).subscribe();
+
+    //on récupère les form.value et on les envoie dans le service
+    //on utilise tap car il n'y a pas d'influence de l'observable (side effect)
+    //on souscrit mais on n'est pas obligé de unsibscribe car requete http donc composant complété une fois souscrit
+    //donc pas de risque de fuite de mémoire
   }
 
 }
