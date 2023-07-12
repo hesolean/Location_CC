@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CampingCar } from '../models/camping-car.model';
-import { campingCarService } from '../services/camping-cars.service';
+import { CampingCar } from '../../../core/models/camping-car.model';
+import { campingCarService } from '../../../core/services/camping-cars.service';
 import {Observable} from "rxjs";
 
 @Component({

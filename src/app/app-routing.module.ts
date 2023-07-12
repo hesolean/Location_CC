@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DetailCcComponent } from './detail-cc/detail-cc.component';
-import { ListeCcComponent } from './liste-cc/liste-cc.component';
-import {NewCampingCarComponent} from "./new-camping-car/new-camping-car.component";
+import {NewCampingCarComponent} from "./camping-cars/components/new-camping-car/new-camping-car.component";
 import {LandingPageComponent} from "./landing-page/landing-page.component";
+import {DetailCcComponent} from "./camping-cars/components/detail-cc/detail-cc.component";
+import {ListeCcComponent} from "./camping-cars/components/liste-cc/liste-cc.component";
 
 const routes: Routes = [
   { path: 'campingCars/:id', component: DetailCcComponent },

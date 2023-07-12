@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CampingCar } from '../models/camping-car.model';
+import { CampingCar } from '../../../core/models/camping-car.model';
 import {Observable, map, tap} from 'rxjs';
-import { campingCarService } from '../services/camping-cars.service';
+import { campingCarService } from '../../../core/services/camping-cars.service';
 import { Router } from '@angular/router';
 
 @Component({
