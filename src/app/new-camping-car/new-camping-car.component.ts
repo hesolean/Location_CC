@@ -28,17 +28,17 @@ export class NewCampingCarComponent implements OnInit {
       marque: [null, Validators.required],
       model: [null],
       motorisation: [0, Validators.required],
-      hauteur: 0,
-      longueur: 0,
-      largeur: 0,
-      poidsTotalAutoriseEnCharge: 0,
-      chargeUtile: 0,
+      hauteur: [0],
+      longueur: [0],
+      largeur: [0],
+      poidsTotalAutoriseEnCharge: [0],
+      chargeUtile: [0],
       profile: [null, Validators.required],
       nombreDePlaces: [0, Validators.required],
       nombreCouchages: [0, Validators.required],
       disposition: [null],
       tarifJournalier: [0, Validators.required],
-      imageUrl: [null, Validators.required, Validators.pattern(this.urlRegex)]
+      imageUrl: [null, [Validators.required, Validators.pattern(this.urlRegex)]]
     },
     {
       updateOn: 'blur' // on ne prend en compte les changements du formulaire que quand on change de champs
@@ -48,7 +48,7 @@ export class NewCampingCarComponent implements OnInit {
       map(formValue => ({
         ...formValue, //... operateur spred
         id: 0,
-        dateReservation: null,
+        dateReservation: [],
         like:0
       }))
     )
@@ -58,7 +58,7 @@ export class NewCampingCarComponent implements OnInit {
     const newCampingCar: CampingCar = {
       ...this.campingCarForm.value,
       id: 0,
-      dateReservation: undefined,
+      dateReservation: [],
       like:0
     }
 

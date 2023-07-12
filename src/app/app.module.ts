@@ -13,6 +13,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { DetailCcComponent } from './detail-cc/detail-cc.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NewCampingCarComponent } from './new-camping-car/new-camping-car.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { NewCampingCarComponent } from './new-camping-car/new-camping-car.compon
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     // à ajouter en même temps que les imports pour le français

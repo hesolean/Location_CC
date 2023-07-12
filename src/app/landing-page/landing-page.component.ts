@@ -13,7 +13,7 @@ export class LandingPageComponent {
   constructor(private router: Router){}
 
   ngOnInit(): void {
-    
+
   }
 
   onContinue():void {
@@ -22,5 +22,6 @@ export class LandingPageComponent {
 
   onSubmitEmail(form: NgForm): void { //NgForm est le type associé à la directive du template, on récupère un objet
     //envoyer dans le service pour communiquer à la bdd
+    console.log(form.value);
   }
 }

@@ -1,5 +1,5 @@
 
 <app-fiche-cc
-*ngFor="let campingCar of campingCars"
+*ngFor="let campingCar of campingCars$ | async"
 [campingCar]="campingCar"
 ></app-fiche-cc>
