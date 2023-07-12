@@ -49,11 +49,16 @@ export class campingCarService {
      * form : formulaire venant du composant newCampingCar
      */
     addNewCampingCar(form: CampingCar): Observable<CampingCar> {
+
+      console.log("addNewCampingCar");
+
       return this.getAllCampingCars().pipe(
         map(campingcar => [...campingcar].sort((a,b) => a.id - b.id)),
         map(sortedCampingcar => sortedCampingcar[sortedCampingcar.length -1]),
         map(previousCampingcar => ({
-          ...previousCampingcar,
+
+          ...form,
+
           id: previousCampingcar.id + 1
         })),
         switchMap(newCampingcar => this.http.post<CampingCar>(

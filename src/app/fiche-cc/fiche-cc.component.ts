@@ -9,25 +9,25 @@ import { Router } from '@angular/router';
   styleUrls: ['./fiche-cc.component.scss']
 })
 export class FicheCcComponent {
-// injecté depuis le parent donc instance dans le parent
-@Input()
-campingCar!: CampingCar;
+  // injecté depuis le parent donc instance dans le parent
+  @Input()
+  campingCar!: CampingCar;
 
-buttonValue!: string;
+  buttonValue!: string;
 
-constructor(
-  private campingCarService: campingCarService,
-  private router: Router){}
+  constructor(
+    private campingCarService: campingCarService,
+    private router: Router){}
 
-ngOnInit(): void {
-  this.buttonValue = "Like !";
+  ngOnInit(): void {
+    this.buttonValue = "Like !";
 
-}
+  }
 
-/**
- * montre la fiche complète
- */
-onViewCampingCar(){
-  this.router.navigateByUrl(`campingCars/${this.campingCar.id}`)
-}  
+  /**
+   * montre la fiche complète
+   */
+  onViewCampingCar(){
+    this.router.navigateByUrl(`campingCars/${this.campingCar.id}`)
+  }
 }

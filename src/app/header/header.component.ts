@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,10 +6,13 @@ import { Router } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit{
 
   constructor(private router: Router){}
-  
+
+  ngOnInit() {
+  }
+
   onAddNewCampingCar():void {
     this.router.navigateByUrl('create');
   }
