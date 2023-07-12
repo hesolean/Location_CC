@@ -11,7 +11,8 @@ import { ListeCcComponent } from './liste-cc/liste-cc.component';
 import { HeaderComponent } from './header/header.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { DetailCcComponent } from './detail-cc/detail-cc.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NewCampingCarComponent } from './new-camping-car/new-camping-car.component';
 
 @NgModule({
   declarations: [
@@ -20,12 +21,14 @@ import { FormsModule } from '@angular/forms';
     ListeCcComponent,
     HeaderComponent,
     LandingPageComponent,
-    DetailCcComponent
+    DetailCcComponent,
+    NewCampingCarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     // à ajouter en même temps que les imports pour le français
