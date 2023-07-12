@@ -40,7 +40,10 @@ export class campingCarService {
         map(campingcar =>  ({
           ...campingcar,
           like: campingcar.like + (likeType === 'like' ? 1 : -1)
-        }))
+        })),
+        switchMap(updatedCampingcar => this.http.put<CampingCar>(
+          `http://localhost:3000/campingCars/${campingCarId}`, updatedCampingcar
+        ))
       );
     }
 
