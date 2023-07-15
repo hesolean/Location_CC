@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CampingCar } from '../models/camping-car.model';
-import { campingCarService } from '../services/camping-cars.service';
-import { ActivatedRoute } from '@angular/router';
-import {Observable} from "rxjs";
+import { CampingCar } from '../../../core/models/camping-car.model';
+import { campingCarService } from '../../../core/services/camping-cars.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Observable, tap} from "rxjs";
 
 @Component({
   selector: 'app-detail-cc',
@@ -15,7 +15,8 @@ export class DetailCcComponent implements OnInit {
 
   constructor(
     private campingCarService: campingCarService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router,
     ){}
 
   ngOnInit(): void {
@@ -30,12 +31,18 @@ export class DetailCcComponent implements OnInit {
    */
   onLike(campingCarId: number){
     if (this.buttonValue === "Like !") {
-      this.campingCar$ = this.campingCarService.likeCampingCarById(campingCarId, "like")
-      this.buttonValue = "Oops, unlike !";
+      this.campingCar$ = this.campingCarService.likeCampingCarById(campingCarId, 'like').pipe(
+        tap(() => this.buttonValue = "Oops, unlike !")
+      );
     } else {
-      this.campingCar$ = this.campingCarService.likeCampingCarById(campingCarId, "unlike")
-      this.buttonValue = "Like !"
+      this.campingCar$ = this.campingCarService.likeCampingCarById(campingCarId, 'unlike').pipe(
+        tap(() => this.buttonValue = "Like !")
+      );
     }
+  }
 
+  onDelete(campingCarId: number) {
+    this.campingCarService.deleteCampingCar(campingCarId);
+    this.router.navigateByUrl('/campingCars');
   }
 }

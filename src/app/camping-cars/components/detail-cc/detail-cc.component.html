@@ -25,8 +25,8 @@
                 <span [ngStyle]="{ color: 'rgb(0,'+ campingCar.like + ', 0)'}">🤌 {{ campingCar.like }}</span>
             </div>
             <a routerLink="/campingCars">Back</a>
+            <button (click)="onDelete(campingCar.id)">Delete</button>
         </div>
-
     </div>
     <img [src]="campingCar.imageUrl" [alt]="campingCar.reference">
 </div>

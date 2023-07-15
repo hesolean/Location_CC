@@ -1,7 +1,8 @@
 import { Injectable } from "@angular/core";
 import { CampingCar } from "../models/camping-car.model";
 import {HttpClient} from "@angular/common/http";
-import {map, Observable, switchMap} from "rxjs";
+import {Observable} from "rxjs";
+import {map, switchMap} from 'rxjs/operators';
 
 @Injectable({
     //toute l'appli partage les mêmes services, une seule instance de ce service
@@ -12,7 +13,6 @@ export class campingCarService {
   constructor(private http: HttpClient) {
   }
     //pas de ngOnInit
-
     /**
      *
      * @returns la liste de tous les campingCars
@@ -40,7 +40,10 @@ export class campingCarService {
         map(campingcar =>  ({
           ...campingcar,
           like: campingcar.like + (likeType === 'like' ? 1 : -1)
-        }))
+        })),
+        switchMap(updatedCampingcar => this.http.put<CampingCar>(
+          `http://localhost:3000/campingCars/${campingCarId}`, updatedCampingcar
+        ))
       );
     }
 
@@ -49,9 +52,6 @@ export class campingCarService {
      * form : formulaire venant du composant newCampingCar
      */
     addNewCampingCar(form: CampingCar): Observable<CampingCar> {
-
-      console.log("addNewCampingCar");
-
       return this.getAllCampingCars().pipe(
         map(campingcar => [...campingcar].sort((a,b) => a.id - b.id)),
         map(sortedCampingcar => sortedCampingcar[sortedCampingcar.length -1]),
@@ -62,8 +62,15 @@ export class campingCarService {
           id: previousCampingcar.id + 1
         })),
         switchMap(newCampingcar => this.http.post<CampingCar>(
-          'http://localhost:3000/campingcars', newCampingcar
+          'http://localhost:3000/campingCars', newCampingcar
         ))
+      );
+    }
+
+    deleteCampingCar(campingCarId: number): void {
+      this.getCampingCarById(campingCarId).pipe(
+          switchMap(deleteCampingCar =>
+            this.http.delete(`http://localhost:3000/campingCars/${campingCarId}`))
       );
     }
 }
