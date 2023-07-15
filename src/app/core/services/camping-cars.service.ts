@@ -67,8 +67,8 @@ export class campingCarService {
       );
     }
 
-    deleteCampingCar(campingCarId: number): void {
-      this.getCampingCarById(campingCarId).pipe(
+    deleteCampingCar(campingCarId: number) {
+      return this.getCampingCarById(campingCarId).pipe(
           switchMap(deleteCampingCar =>
             this.http.delete(`http://localhost:3000/campingCars/${campingCarId}`))
       );
