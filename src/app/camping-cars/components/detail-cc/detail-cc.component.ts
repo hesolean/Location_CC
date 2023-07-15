@@ -31,10 +31,14 @@ export class DetailCcComponent implements OnInit {
    */
   onLike(campingCarId: number){
     if (this.buttonValue === "Like !") {
-      this.campingCar$ = this.campingCarService.likeCampingCarById(campingCarId, "like")
+      this.campingCarService.likeCampingCarById(campingCarId, 'like').pipe(
+        tap(() => this.campingCar$ = this.campingCarService.getCampingCarById(campingCarId))
+      ).subscribe();
       this.buttonValue = "Oops, unlike !";
     } else {
-      this.campingCar$ = this.campingCarService.likeCampingCarById(campingCarId, "unlike")
+      this.campingCarService.likeCampingCarById(campingCarId, 'unlike').pipe(
+        tap(() => this.campingCar$ = this.campingCarService.getCampingCarById(campingCarId))
+      ).subscribe();
       this.buttonValue = "Like !"
     }
 
@@ -42,6 +46,6 @@ export class DetailCcComponent implements OnInit {
 
   onDelete(campingCarId: number) {
     this.campingCarService.deleteCampingCar(campingCarId);
-    this.router.navigateByUrl('campingCars');
+    this.router.navigateByUrl('/campingCars');
   }
 }

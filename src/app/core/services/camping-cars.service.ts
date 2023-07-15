@@ -1,7 +1,8 @@
 import { Injectable } from "@angular/core";
 import { CampingCar } from "../models/camping-car.model";
 import {HttpClient} from "@angular/common/http";
-import {map, Observable, switchMap} from "rxjs";
+import {Observable} from "rxjs";
+import {map, switchMap} from 'rxjs/operators';
 
 @Injectable({
     //toute l'appli partage les mêmes services, une seule instance de ce service

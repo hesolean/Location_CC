@@ -63,7 +63,7 @@ export class NewCampingCarComponent implements OnInit {
     }
 
     this.campingCarService.addNewCampingCar(newCampingCar).pipe(
-      tap(() => this.router.navigateByUrl('campingCars'))
+      tap(() => this.router.navigateByUrl('/campingCars'))
     ).subscribe();
 
     //on récupère les form.value et on les envoie dans le service
