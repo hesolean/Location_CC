@@ -42,7 +42,7 @@ export class DetailCcComponent implements OnInit {
   }
 
   onDelete(campingCarId: number) {
-    this.campingCarService.deleteCampingCar(campingCarId);
-    this.router.navigateByUrl('/campingCars');
+    this.campingCarService.deleteCampingCar(campingCarId).subscribe((result) =>
+    this.router.navigateByUrl('/campingCars'));
   }
 }
