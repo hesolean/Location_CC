@@ -13,7 +13,6 @@ export class campingCarService {
   constructor(private http: HttpClient) {
   }
     //pas de ngOnInit
-
     /**
      *
      * @returns la liste de tous les campingCars
@@ -53,9 +52,6 @@ export class campingCarService {
      * form : formulaire venant du composant newCampingCar
      */
     addNewCampingCar(form: CampingCar): Observable<CampingCar> {
-
-      console.log("addNewCampingCar");
-
       return this.getAllCampingCars().pipe(
         map(campingcar => [...campingcar].sort((a,b) => a.id - b.id)),
         map(sortedCampingcar => sortedCampingcar[sortedCampingcar.length -1]),

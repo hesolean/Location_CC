@@ -12,8 +12,8 @@ export class AuthInterceptor implements HttpInterceptor {
     //création des headers utilisables par Angular
     //.append ajoute une autorisation
     const headers = new HttpHeaders()
-      .append('Autorization', `Bearer ${this.authService.getToken()}`);// ne peut pas le modifier
-    const modifiedReq = req.clone({headers}); //on clone la requete
+      .append('Authorization', `Bearer ${this.authService.getToken()}`);// ne peut pas le modifier
+    const modifiedReq = req.clone({headers}); //on clone la requete car les requetes sont imuables
     return next.handle(modifiedReq); //on renvoie la version modifiée
   }
 }

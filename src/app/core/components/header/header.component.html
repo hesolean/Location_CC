@@ -3,7 +3,7 @@
     <nav>
         <!--on ajoute [[routerLinkActive]=""] pour que cela ne fonctionne que quand le nom est exact sinon actif aussi pour les enfants-->
         <a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true}">Home</a>
-        <a routerLink="/campingCars" routerLinkActive="active">Camping Cars</a>
+        <a routerLink="campingCars" routerLinkActive="active">Camping Cars</a>
     </nav>
     <button (click)="onAddNewCampingCar()">+</button>
 </header>

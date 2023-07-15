@@ -3,11 +3,12 @@ import {RouterModule, Routes} from "@angular/router";
 import {DetailCcComponent} from "./components/detail-cc/detail-cc.component";
 import {ListeCcComponent} from "./components/liste-cc/liste-cc.component";
 import {NewCampingCarComponent} from "./components/new-camping-car/new-camping-car.component";
+import {AuthGuard} from "../core/guard/auth.guard";
 
 const routes: Routes = [
-  { path: 'create', component: NewCampingCarComponent },
-  { path: ':id', component: DetailCcComponent },
-  { path: '', component: ListeCcComponent }
+  { path: 'create', component: NewCampingCarComponent, canActivate: [AuthGuard] },
+  { path: ':id', component: DetailCcComponent, canActivate: [AuthGuard] },
+  { path: '', component: ListeCcComponent, canActivate: [AuthGuard] }
 ];
 @NgModule({
   imports: [
