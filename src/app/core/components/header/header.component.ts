@@ -14,6 +14,6 @@ export class HeaderComponent implements OnInit{
   }
 
   onAddNewCampingCar():void {
-    this.router.navigateByUrl('campingcars/create');
+    this.router.navigateByUrl('campingCars/create');
   }
 }

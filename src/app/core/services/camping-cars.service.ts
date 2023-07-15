@@ -65,7 +65,7 @@ export class campingCarService {
           id: previousCampingcar.id + 1
         })),
         switchMap(newCampingcar => this.http.post<CampingCar>(
-          'http://localhost:3000/campingcars', newCampingcar
+          'http://localhost:3000/campingCars', newCampingcar
         ))
       );
     }

@@ -6,9 +6,6 @@ import {ListeCcComponent} from "./components/liste-cc/liste-cc.component";
 import {NewCampingCarComponent} from "./components/new-camping-car/new-camping-car.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {CampingCarsRoutingModule} from "./camping-cars-routing.module";
-import {RouterModule} from "@angular/router";
-
-
 
 @NgModule({
   declarations: [
@@ -20,7 +17,6 @@ import {RouterModule} from "@angular/router";
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule,
     CampingCarsRoutingModule
   ],
   exports: [
