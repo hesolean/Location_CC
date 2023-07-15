@@ -3,7 +3,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
 
 Running the website :
-npm run start on angular-intermediate-backend
+npm run start on angular-intermediate-backend then 
 ng serve on src/app
 
 ## Development server
